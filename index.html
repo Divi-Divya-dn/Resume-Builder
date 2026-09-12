@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Builder</title>
+
+    <style>
+
+        /* ---------- PAGE ---------- */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            background-color: #eeeeee;
+            padding: 10px;
+            margin-top: 25px;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+
+        /* ---------- FORM ---------- */
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+
+            background-color: #333;
+            color: white;
+
+            border: none;
+            border-radius: 5px;
+
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+
+        /* ---------- GENERATED RESUME ---------- */
+
+        #resume {
+            display: none;
+
+            width: 90%;
+            max-width: 900px;
+
+            margin: 30px auto;
+            padding: 30px;
+
+            background-color: white;
+
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+
+        .resume-section {
+            margin-top: 25px;
+        }
+
+        .resume-section h2 {
+            background-color: white;
+
+            border-bottom: 2px solid black;
+
+            padding: 5px 0;
+        }
+
+
+        /* ---------- RESUME HEADER ---------- */
+
+        .personal {
+            text-align: center;
+        }
+
+        .personal h1 {
+            margin-bottom: 5px;
+        }
+
+
+        /* ---------- EDUCATION TABLE ---------- */
+
+        .education-table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 10px;
+        }
+
+        .education-table th,
+        .education-table td {
+            border: 1px solid black;
+
+            padding: 10px;
+
+            text-align: left;
+        }
+
+        .education-table th {
+            background-color: #eeeeee;
+
+            font-weight: bold;
+        }
+
+
+        /* ---------- PRINT ---------- */
+
+        .print-button {
+            margin-top: 30px;
+        }
+
+
+        @media print {
+
+            body {
+                background-color: white;
+            }
+
+            .container {
+                display: none;
+            }
+
+            #resume {
+                display: block !important;
+
+                width: 100%;
+
+                margin: 0;
+
+                padding: 20px;
+
+                border: none;
+            }
+
+            .print-button {
+                display: none;
+            }
+        }
+
+
+        /* ---------- MOBILE ---------- */
+
+        @media screen and (max-width: 600px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .container,
+            #resume {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .education-table {
+                font-size: 12px;
+            }
+
+            .education-table th,
+            .education-table td {
+                padding: 6px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================================= -->
+<!--                 RESUME INPUT FORM                 -->
+<!-- ================================================= -->
+
+<div class="container">
+
+    <h1>Resume Builder</h1>
+
+    <p style="text-align:center;">
+        Enter your information below to create your resume.
+    </p>
+
+
+    <form id="resumeForm">
+
+
+        <!-- ================= CAREER OBJECTIVE ================= -->
+
+        <h2>1. Career Objective</h2>
+
+        <label>Career Objective</label>
+
+        <textarea
+            id="objective"
+            placeholder="Enter your career objective">
+        </textarea>
+
+
+
+        <!-- ================= PERSONAL DETAILS ================= -->
+
+        <h2>2. Personal Details</h2>
+
+
+        <label>Full Name</label>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your full name">
+
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email">
+
+
+        <label>Phone Number</label>
+
+        <input
+            type="text"
+            id="phone"
+            placeholder="Enter your phone number">
+
+
+        <label>Address</label>
+
+        <textarea
+            id="address"
+            placeholder="Enter your address">
+        </textarea>
+
+
+        <label>Date of Birth</label>
+
+        <input
+            type="date"
+            id="dob">
+
+
+        <label>Gender</label>
+
+        <input
+            type="text"
+            id="gender"
+            placeholder="Enter your gender">
+
+
+
+        <!-- ================= EDUCATIONAL DETAILS ================= -->
+
+        <h2>3. Educational Details</h2>
+
+
+        <!-- SCHOOL -->
+
+        <h3>School / SSLC</h3>
+
+        <label>School Name</label>
+
+        <input
+            type="text"
+            id="school"
+            placeholder="Enter school name">
+
+
+        <label>Year of Passing</label>
+
+        <input
+            type="text"
+            id="schoolYear"
+            placeholder="Example: 2022">
+
+
+        <label>Percentage</label>
+
+        <input
+            type="text"
+            id="schoolPercentage"
+            placeholder="Example: 85%">
+
+
+
+        <!-- PUC -->
+
+        <h3>Pre-University / PUC</h3>
+
+        <label>PUC College Name</label>
+
+        <input
+            type="text"
+            id="puc"
+            placeholder="Enter PUC college name">
+
+
+        <label>Year of Passing</label>
+
+        <input
+            type="text"
+            id="pucYear"
+            placeholder="Example: 2024">
+
+
+        <label>Percentage</label>
+
+        <input
+            type="text"
+            id="pucPercentage"
+            placeholder="Example: 80%">
+
+
+
+        <!-- DEGREE -->
+
+        <h3>University / Degree</h3>
+
+        <label>University College Name</label>
+
+        <input
+            type="text"
+            id="degree"
+            placeholder="Enter university college name">
+
+
+        <label>Year of Passing</label>
+
+        <input
+            type="text"
+            id="degreeYear"
+            placeholder="Example: 2027">
+
+
+        <label>Percentage / CGPA</label>
+
+        <input
+            type="text"
+            id="degreePercentage"
+            placeholder="Example: 85% or 8.5 CGPA">
+
+
+
+        <!-- ================= EMPLOYMENT HISTORY ================= -->
+
+        <h2>4. Employment History</h2>
+
+
+        <label>Company Name</label>
+
+        <input
+            type="text"
+            id="company"
+            placeholder="Enter company name">
+
+
+        <label>Job Role</label>
+
+        <input
+            type="text"
+            id="jobRole"
+            placeholder="Example: Web Developer Intern">
+
+
+        <label>Duration</label>
+
+        <input
+            type="text"
+            id="duration"
+            placeholder="Example: June 2026 - August 2026">
+
+
+        <label>Job Description</label>
+
+        <textarea
+            id="jobDescription"
+            placeholder="Describe your work">
+        </textarea>
+
+
+
+        <!-- ================= TECHNICAL SKILLS ================= -->
+
+        <h2>5. Technical Skills</h2>
+
+
+        <label>Technical Skills</label>
+
+        <textarea
+            id="technicalSkills"
+            placeholder="Example: Python, HTML, CSS, JavaScript, SQL">
+        </textarea>
+
+
+
+        <!-- ================= SOFT SKILLS ================= -->
+
+        <h2>6. Soft Skills</h2>
+
+
+        <label>Soft Skills</label>
+
+        <textarea
+            id="softSkills"
+            placeholder="Example: Communication, Teamwork, Leadership, Problem Solving">
+        </textarea>
+
+
+
+        <!-- ================= OTHER DETAILS ================= -->
+
+        <h2>7. Other Details</h2>
+
+
+        <label>Languages Known</label>
+
+        <input
+            type="text"
+            id="languages"
+            placeholder="Example: English, Kannada, Hindi">
+
+
+        <label>Hobbies</label>
+
+        <input
+            type="text"
+            id="hobbies"
+            placeholder="Example: Reading, Drawing, Coding">
+
+
+        <label>Certifications</label>
+
+        <textarea
+            id="certifications"
+            placeholder="Enter your certifications">
+        </textarea>
+
+
+
+        <!-- ================= DECLARATION ================= -->
+
+        <h2>8. Declaration</h2>
+
+
+        <label>Declaration</label>
+
+        <textarea id="declaration">
+I hereby declare that the information provided above is true and correct to the best of my knowledge.
+        </textarea>
+
+
+
+        <!-- ================= BUTTON ================= -->
+
+        <button
+            type="button"
+            onclick="generateResume()">
+
+            Generate Resume
+
+        </button>
+
+    </form>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!--                GENERATED RESUME                   -->
+<!-- ================================================= -->
+
+<div id="resume">
+
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="personal">
+
+        <h1 id="rName"></h1>
+
+        <p>
+
+            <span id="rEmail"></span>
+
+            |
+
+            <span id="rPhone"></span>
+
+        </p>
+
+        <p id="rAddress"></p>
+
+    </div>
+
+
+
+    <!-- ================= CAREER OBJECTIVE ================= -->
+
+    <div class="resume-section">
+
+        <h2>Career Objective</h2>
+
+        <p id="rObjective"></p>
+
+    </div>
+
+
+
+    <!-- ================= PERSONAL DETAILS ================= -->
+
+    <div class="resume-section">
+
+        <h2>Personal Details</h2>
+
+        <p>
+            <b>Date of Birth:</b>
+
+            <span id="rDob"></span>
+        </p>
+
+        <p>
+            <b>Gender:</b>
+
+            <span id="rGender"></span>
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= EDUCATIONAL DETAILS ================= -->
+
+    <div class="resume-section">
+
+        <h2>Educational Details</h2>
+
+
+        <table class="education-table">
+
+            <tr>
+
+                <th>Qualification</th>
+
+                <th>School / College Name</th>
+
+                <th>Year</th>
+
+                <th>Percentage / CGPA</th>
+
+            </tr>
+
+
+            <tr>
+
+                <td>10th / SSLC</td>
+
+                <td id="rSchool"></td>
+
+                <td id="rSchoolYear"></td>
+
+                <td id="rSchoolPercentage"></td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>12th / PUC</td>
+
+                <td id="rPuc"></td>
+
+                <td id="rPucYear"></td>
+
+                <td id="rPucPercentage"></td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Degree</td>
+
+                <td id="rDegree"></td>
+
+                <td id="rDegreeYear"></td>
+
+                <td id="rDegreePercentage"></td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
+
+    <!-- ================= EMPLOYMENT HISTORY ================= -->
+
+    <div class="resume-section">
+
+        <h2>Employment History</h2>
+
+
+        <p>
+
+            <b>Company:</b>
+
+            <span id="rCompany"></span>
+
+        </p>
+
+
+        <p>
+
+            <b>Job Role:</b>
+
+            <span id="rJobRole"></span>
+
+        </p>
+
+
+        <p>
+
+            <b>Duration:</b>
+
+            <span id="rDuration"></span>
+
+        </p>
+
+
+        <p id="rJobDescription"></p>
+
+    </div>
+
+
+
+    <!-- ================= TECHNICAL SKILLS ================= -->
+
+    <div class="resume-section">
+
+        <h2>Technical Skills</h2>
+
+        <p id="rTechnicalSkills"></p>
+
+    </div>
+
+
+
+    <!-- ================= SOFT SKILLS ================= -->
+
+    <div class="resume-section">
+
+        <h2>Soft Skills</h2>
+
+        <p id="rSoftSkills"></p>
+
+    </div>
+
+
+
+    <!-- ================= OTHER DETAILS ================= -->
+
+    <div class="resume-section">
+
+        <h2>Other Details</h2>
+
+
+        <p>
+
+            <b>Languages:</b>
+
+            <span id="rLanguages"></span>
+
+        </p>
+
+
+        <p>
+
+            <b>Hobbies:</b>
+
+            <span id="rHobbies"></span>
+
+        </p>
+
+
+        <p>
+
+            <b>Certifications:</b>
+
+            <span id="rCertifications"></span>
+
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= DECLARATION ================= -->
+
+    <div class="resume-section">
+
+        <h2>Declaration</h2>
+
+        <p id="rDeclaration"></p>
+
+    </div>
+
+
+
+    <!-- ================= SIGNATURE ================= -->
+
+    <br>
+
+    <p>
+        <b>Place:</b>
+        ____________________
+    </p>
+
+
+    <p>
+        <b>Date:</b>
+        ____________________
+    </p>
+
+
+    <p>
+        <b>Signature:</b>
+        ____________________
+    </p>
+
+
+
+    <!-- ================= PRINT ================= -->
+
+    <button
+        class="print-button"
+        onclick="window.print()">
+
+        Print / Save as PDF
+
+    </button>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!--                  JAVASCRIPT                      -->
+<!-- ================================================= -->
+
+<script>
+
+
+function generateResume() {
+
+
+    // ==========================================
+    // CAREER OBJECTIVE
+    // ==========================================
+
+    document.getElementById("rObjective").innerText =
+        document.getElementById("objective").value;
+
+
+
+    // ==========================================
+    // PERSONAL DETAILS
+    // ==========================================
+
+    document.getElementById("rName").innerText =
+        document.getElementById("name").value;
+
+
+    document.getElementById("rEmail").innerText =
+        document.getElementById("email").value;
+
+
+    document.getElementById("rPhone").innerText =
+        document.getElementById("phone").value;
+
+
+    document.getElementById("rAddress").innerText =
+        document.getElementById("address").value;
+
+
+    document.getElementById("rDob").innerText =
+        document.getElementById("dob").value;
+
+
+    document.getElementById("rGender").innerText =
+        document.getElementById("gender").value;
+
+
+
+    // ==========================================
+    // SCHOOL DETAILS
+    // ==========================================
+
+    document.getElementById("rSchool").innerText =
+        document.getElementById("school").value;
+
+
+    document.getElementById("rSchoolYear").innerText =
+        document.getElementById("schoolYear").value;
+
+
+    document.getElementById("rSchoolPercentage").innerText =
+        document.getElementById("schoolPercentage").value;
+
+
+
+    // ==========================================
+    // PUC DETAILS
+    // ==========================================
+
+    document.getElementById("rPuc").innerText =
+        document.getElementById("puc").value;
+
+
+    document.getElementById("rPucYear").innerText =
+        document.getElementById("pucYear").value;
+
+
+    document.getElementById("rPucPercentage").innerText =
+        document.getElementById("pucPercentage").value;
+
+
+
+    // ==========================================
+    // DEGREE DETAILS
+    // ==========================================
+
+    document.getElementById("rDegree").innerText =
+        document.getElementById("degree").value;
+
+
+    document.getElementById("rDegreeYear").innerText =
+        document.getElementById("degreeYear").value;
+
+
+    document.getElementById("rDegreePercentage").innerText =
+        document.getElementById("degreePercentage").value;
+
+
+
+    // ==========================================
+    // EMPLOYMENT DETAILS
+    // ==========================================
+
+    document.getElementById("rCompany").innerText =
+        document.getElementById("company").value;
+
+
+    document.getElementById("rJobRole").innerText =
+        document.getElementById("jobRole").value;
+
+
+    document.getElementById("rDuration").innerText =
+        document.getElementById("duration").value;
+
+
+    document.getElementById("rJobDescription").innerText =
+        document.getElementById("jobDescription").value;
+
+
+
+    // ==========================================
+    // TECHNICAL SKILLS
+    // ==========================================
+
+    document.getElementById("rTechnicalSkills").innerText =
+        document.getElementById("technicalSkills").value;
+
+
+
+    // ==========================================
+    // SOFT SKILLS
+    // ==========================================
+
+    document.getElementById("rSoftSkills").innerText =
+        document.getElementById("softSkills").value;
+
+
+
+    // ==========================================
+    // OTHER DETAILS
+    // ==========================================
+
+    document.getElementById("rLanguages").innerText =
+        document.getElementById("languages").value;
+
+
+    document.getElementById("rHobbies").innerText =
+        document.getElementById("hobbies").value;
+
+
+    document.getElementById("rCertifications").innerText =
+        document.getElementById("certifications").value;
+
+
+
+    // ==========================================
+    // DECLARATION
+    // ==========================================
+
+    document.getElementById("rDeclaration").innerText =
+        document.getElementById("declaration").value;
+
+
+
+    // ==========================================
+    // SHOW RESUME
+    // ==========================================
+
+    document.getElementById("resume").style.display = "block";
+
+
+
+    // ==========================================
+    // SCROLL TO RESUME
+    // ==========================================
+
+    document.getElementById("resume").scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>
