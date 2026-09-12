@@ -1,0 +1,421 @@
+/* ==============================
+   GENERAL
+================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+    line-height: 1.6;
+}
+
+
+/* ==============================
+   HEADER
+================================= */
+
+header {
+    background: #1f4e79;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 16px;
+}
+
+
+/* ==============================
+   MAIN
+================================= */
+
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+
+/* ==============================
+   FORM SECTIONS
+================================= */
+
+.form-section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.form-section h2 {
+    color: #1f4e79;
+    border-bottom: 2px solid #1f4e79;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+
+.form-section h3 {
+    color: #444;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+
+/* ==============================
+   FORM ELEMENTS
+================================= */
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 6px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    background: white;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #1f4e79;
+    box-shadow: 0 0 4px rgba(31, 78, 121, 0.3);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+input[type="file"] {
+    padding: 9px;
+}
+
+input[readonly] {
+    background: #f1f1f1;
+}
+
+.help-text {
+    font-size: 13px;
+    color: #777;
+    margin-top: 5px;
+}
+
+
+/* ==============================
+   BUTTONS
+================================= */
+
+.button-section {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+button {
+    padding: 13px 25px;
+    border: none;
+    border-radius: 6px;
+    background: #1f4e79;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.reset-button {
+    background: #777;
+}
+
+#addEmployment {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+
+/* ==============================
+   EMPLOYMENT
+================================= */
+
+.employment-entry {
+    padding: 18px;
+    margin-top: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.employment-entry:first-child {
+    margin-top: 0;
+}
+
+.removeEmployment {
+    background: #777;
+    margin-top: 10px;
+}
+
+
+/* ==============================
+   RESUME OUTPUT
+================================= */
+
+.resume-output {
+    max-width: 850px;
+    margin: 30px auto 50px;
+    background: white;
+    padding: 45px;
+    border-radius: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ==============================
+   RESUME HEADER
+================================= */
+
+.resume-header {
+    text-align: center;
+    border-bottom: 2px solid #1f4e79;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.resume-header h1 {
+    font-size: 32px;
+    margin: 8px 0;
+    color: #1f4e79;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.resume-header p {
+    font-size: 14px;
+    color: #555;
+    margin: 3px 0;
+}
+
+
+/* ==============================
+   PROFILE PHOTO
+================================= */
+
+.resume-photo {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 10px;
+    border: 3px solid #1f4e79;
+}
+
+
+/* ==============================
+   RESUME SECTIONS
+================================= */
+
+.resume-section {
+    margin-bottom: 22px;
+}
+
+.resume-section h2 {
+    font-size: 18px;
+    color: #1f4e79;
+    text-transform: uppercase;
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.resume-section p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 5px;
+}
+
+
+/* ==============================
+   EDUCATION TABLE
+================================= */
+
+.education-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.education-table th,
+.education-table td {
+    border: 1px solid #aaa;
+    padding: 9px;
+    text-align: left;
+}
+
+.education-table th {
+    background: #1f4e79;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* ==============================
+   SKILLS
+================================= */
+
+.skills-list {
+    padding-left: 22px;
+}
+
+.skills-list li {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+
+/* ==============================
+   EMPLOYMENT OUTPUT
+================================= */
+
+.employment-item {
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.employment-item:last-child {
+    border-bottom: none;
+}
+
+.employment-item h3 {
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.employment-item p {
+    margin: 3px 0;
+}
+
+
+/* ==============================
+   RESUME BUTTON
+================================= */
+
+.print-button {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ==============================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    main {
+        width: 95%;
+    }
+
+    .form-section {
+        padding: 18px;
+    }
+
+    .resume-output {
+        padding: 20px;
+    }
+
+    .button-section {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .education-table {
+        font-size: 11px;
+    }
+
+    .education-table th,
+    .education-table td {
+        padding: 6px;
+    }
+
+    .resume-header h1 {
+        font-size: 25px;
+    }
+}
+
+
+/* ==============================
+   PRINT / SAVE AS PDF
+================================= */
+
+@media print {
+
+    body {
+        background: white;
+    }
+
+    header,
+    #resumeForm {
+        display: none !important;
+    }
+
+    main {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+
+    .resume-output {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 20px;
+        box-shadow: none;
+    }
+
+    .print-button {
+        display: none !important;
+    }
+}
